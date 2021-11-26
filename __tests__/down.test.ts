@@ -40,14 +40,16 @@ describe('down command', () => {
     new Promise((resolve) => resolve(fakeMigrations))
   );
 
-  ((ora as unknown) as jest.Mock).mockImplementation(oraMock);
+  (ora as unknown as jest.Mock).mockImplementation(oraMock);
 
-  (loadMigrationFile as jest.Mock).mockImplementation((file: string) => [
-    {
-      ...fakeMigrations.find((m: MigrationModel) => m.file === file),
-      instance: fakeMigrationInstance,
-    },
-  ]);
+  (loadMigrationFile as jest.Mock).mockImplementation(
+    (migrationsDir: string, file: string) => [
+      {
+        ...fakeMigrations.find((m: MigrationModel) => m.file === file),
+        instance: fakeMigrationInstance,
+      },
+    ]
+  );
 
   (getLastAppliedMigration as jest.Mock).mockReturnValue(
     new Promise((resolve) => resolve(fakeMigrations[numberOfMigrations - 1]))

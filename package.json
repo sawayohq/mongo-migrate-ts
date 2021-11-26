@@ -1,8 +1,9 @@
 {
-  "name": "mongo-migrate-ts",
-  "version": "0.0.0",
+  "name": "@sawayo/mongo-migrate-ts",
+  "version": "1.0.0",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
+  "private": true,
   "bin": {
     "mongo-migrate": "dist/bin/index.js"
   },
