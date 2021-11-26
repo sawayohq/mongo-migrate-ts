@@ -3,13 +3,8 @@
   "version": "1.0.0",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
-  "private": true,
   "bin": {
     "mongo-migrate": "dist/bin/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mycodeself/mongo-migrate-ts.git"
   },
   "scripts": {
     "dev": "ts-node bin/index.ts",

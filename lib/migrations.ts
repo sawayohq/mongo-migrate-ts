@@ -24,11 +24,13 @@ export const loadMigrationFile = async (
   migrationsDir: string,
   fileName: string
 ): Promise<MigrationObject[]> => {
-  if (!fs.existsSync(fileName)) {
+  const filePath = path.resolve(migrationsDir, fileName);
+
+  if (!fs.existsSync(filePath)) {
     throw new Error(`File ${fileName} not exists.`);
   }
 
-  const classes = await import(path.resolve(migrationsDir, fileName));
+  const classes = await import(filePath);
 
   return Object.keys(classes)
     .filter((key: string) => typeof classes[key] === 'function')
